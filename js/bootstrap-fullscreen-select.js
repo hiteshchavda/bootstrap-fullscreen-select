@@ -14,7 +14,7 @@ if (typeof jQuery === 'undefined') {
 }
 
 (function ($) {
-    
+
     $.fn.mobileSelect = function (options) {
         var $this = $(this);
 
@@ -112,9 +112,9 @@ if (typeof jQuery === 'undefined') {
                 if (this.$e.attr('data-style') !== undefined) {
                     this.style = this.$e.attr('data-style');
                 }
-                
+
                 var b = this.$e.attr('disabled') || '';
-                this.$e.before('<button type="button" class="btn ' + this.style + ' btn-mobileSelect-gen" '+b+'><span class="text"></span> <span class="caret"></span></button>');
+                this.$e.before('<button type="button" class="btn ' + this.style + ' btn-mobileSelect-gen" '+b+' formnovalidate><span class="text"></span> <span class="caret"></span></button>');
                 this.$triggerElement = this.$e.prev();
                 this.$e.hide();
             } else {
@@ -158,7 +158,7 @@ if (typeof jQuery === 'undefined') {
             var that = this;
             var prevGroup = '';
             $.each(this.options, function (i, a) {
-                
+
                 if(a.group && a.group !== prevGroup){
                     if(a.groupDisabled){
                         var b = 'disabled';
@@ -170,7 +170,7 @@ if (typeof jQuery === 'undefined') {
                     var b = 'disabled';
                 }
                 that.$listcontainer.append('<a href="#" class="mobileSelect-control" '+ b +' data-value="' + a.value + '">' + a.text + '</a>');
-                
+
             });
             this.sync();
             this._updateBtnCount();
@@ -182,7 +182,7 @@ if (typeof jQuery === 'undefined') {
              */
             if (this.$triggerElement.is('button') && this.$triggerElement.hasClass('btn-mobileSelect-gen')) {
                 var a = this.$triggerElement.find('.text'),
-                    b = this.$triggerElement.next().find('option:selected').text() || this.$e.val(), 
+                    b = this.$triggerElement.next().find('option:selected').text() || this.$e.val(),
                     c = this.$e.attr('data-btntitle'),
                     d = this.$e.attr('data-selected');
 
@@ -213,7 +213,7 @@ if (typeof jQuery === 'undefined') {
                     }else{
                         a.html(c);
                     }
-                    
+
                 }
             }
         },
@@ -360,9 +360,9 @@ if (typeof jQuery === 'undefined') {
             $.each(this.$e.find('option'), function (i, a) {
                 var $t = $(a);
                 if ($t.text()) {
-                    
+
 //                    var label = $t.parent().is('optgroup') ? $t.parent().attr('label') : false;
-                    
+
                     if($t.parent().is('optgroup')){
                         var label = $t.parent().attr('label');
                         var labelDisabled = $t.parent().prop('disabled');
@@ -370,7 +370,7 @@ if (typeof jQuery === 'undefined') {
                         var label = false;
                         var labelDisabled = false;
                     }
-                    
+
                     options.push({
                         value: $t.val(),
                         text: $.trim($t.text()),
@@ -378,7 +378,7 @@ if (typeof jQuery === 'undefined') {
                         group: label,
                         groupDisabled: labelDisabled
                     });
-                    
+
                 }
             });
             this.options = options;
